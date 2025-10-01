@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 20
+    commands:
+      - echo Installing dependencies...
+      - apt-get update
+      - apt-get install -y pkg-config libssl-dev
+      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - export PATH="$PATH:$HOME/.cargo/bin"
+      - rustc --version
+      - cargo --version
+
+  pre_build:
+    commands:
+      - echo Pre-build phase...
+      - cargo fetch
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - cargo build --release
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - ls -lh target/release
+
+artifacts:
+  files:
+    - target/release/webapp

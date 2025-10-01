@@ -1,0 +1,9 @@
+[registries.tryout-devops_cicd]
+index = "sparse+https://tryout-211125715298.d.codeartifact.eu-north-1.amazonaws.com/cargo/devops_cicd/"
+credential-provider = "cargo:token-from-stdout aws codeartifact get-authorization-token --domain tryout --domain-owner 211125715298 --region eu-north-1 --query authorizationToken --output text"
+
+[registry]
+default = "tryout-devops_cicd"
+
+[source.crates-io]
+replace-with = "tryout-devops_cicd"
