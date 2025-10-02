@@ -30,3 +30,5 @@ phases:
 artifacts:
   files:
     - target/release/webapp
+    - appspec.yml
+    - scripts/**/*
