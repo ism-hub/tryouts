@@ -13,9 +13,10 @@ After=network.target
 [Service]
 Type=simple
 User=ec2-user
-WorkingDirectory=/usr/share/webapps/webapp
+WorkingDirectory=/usr/share/webapps/
 ExecStart=/usr/share/webapps/webapp
 Restart=on-failure
+RestartSec=2s
 Environment=RUST_LOG=info
 
 [Install]
