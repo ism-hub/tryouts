@@ -24,6 +24,7 @@ EOF
 sudo systemctl daemon-reload
 
 echo Configuring nginx..
+sudo mkdir -p /etc/nginx/sites-available
 sudo cat << EOF > /etc/nginx/sites-available/mywebapp.conf
 server {
     listen 80;
