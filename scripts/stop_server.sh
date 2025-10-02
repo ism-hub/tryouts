@@ -1,4 +1,4 @@
 #!/bin/bash
 echo Stop-server called, stopping nginx and our webapp..
-sudo systemctl stop nginx
-sudo systemctl stop webapp
+sudo systemctl stop nginx || true
+sudo systemctl stop webapp || true
