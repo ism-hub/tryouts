@@ -30,7 +30,7 @@ sudo mkdir -p /etc/nginx/sites-enabled/
 sudo cat << EOF > /etc/nginx/sites-available/mywebapp.conf
 server {
     listen 80;
-    server_name mywebapp.tryout.com;
+    server_name _;
 
     location / {
         proxy_pass         http://127.0.0.1:8080;
@@ -44,5 +44,6 @@ server {
 EOF
 sudo ln -s /etc/nginx/sites-available/mywebapp.conf /etc/nginx/sites-enabled/
 
+sudo nginx -t
 # Enable at boot
 # sudo systemctl enable nginx
