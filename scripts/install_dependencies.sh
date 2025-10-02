@@ -5,14 +5,14 @@ sudo amazon-linux-extras enable nginx1
 sudo yum install -y nginx curl
 
 echo Configuring systemd-service for webapp..
-sudo cat << EOF > /etc/nginx/sites-available/mywebapp.conf
+sudo tee /etc/systemd/system/webapp.service > /dev/null <<'EOF'
 [Unit]
 Description=Rust Actix WebApp
 After=network.target
 
 [Service]
 Type=simple
-User=ec2-user        # or another non-root user
+User=ec2-user
 WorkingDirectory=/usr/share/webapps/webapp
 ExecStart=/usr/share/webapps/webapp
 Restart=on-failure
